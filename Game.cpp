@@ -84,12 +84,12 @@ void Game::Render() const
 
 	if (bricks.size() == 0)
 	{
-		Console::WordWrap(25, 15, 20, "YOU WIN! Press R to reset");
+		Console::WordWrap(25, 15, 20, "You win! Press R to play again");
 	}
 
 	if (ball.y_position >= WINDOW_HEIGHT - 1)
 	{
-		Console::WordWrap(25, 15, 20, "YOU LOSE. Press R to reset");
+		Console::WordWrap(25, 15, 20, "You lose. Press R to play again.");
 	}
 
 	Console::Lock(false);
