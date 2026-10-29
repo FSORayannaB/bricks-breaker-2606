@@ -82,6 +82,16 @@ void Game::Render() const
 		bricks[i].Draw();
 	}
 
+	if (bricks.size() == 0)
+	{
+		Console::WordWrap(25, 15, 20, "YOU WIN! Press R to reset");
+	}
+
+	if (ball.y_position >= WINDOW_HEIGHT - 1)
+	{
+		Console::WordWrap(25, 15, 20, "YOU LOSE. Press R to reset");
+	}
+
 	Console::Lock(false);
 }
 
@@ -108,6 +118,11 @@ void Game::CheckCollision()
 
 	// TODO #6 - If no bricks remain, pause ball and display (render) victory text with R to reset
 
+	if (bricks.size() == 0)
+	{
+		ball.x_velocity = 0;
+		ball.y_velocity = 0;
+	}
 
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
 	{
@@ -115,4 +130,11 @@ void Game::CheckCollision()
 	}
 
 	// TODO #7 - If ball touches bottom of window, pause ball and display (render) defeat text with R to reset
+
+	if (ball.y_position >= WINDOW_HEIGHT -1)
+	{
+		ball.x_velocity = 0;
+		ball.y_velocity = 0;
+	}
+
 }
